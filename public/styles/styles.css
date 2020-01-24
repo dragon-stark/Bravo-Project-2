@@ -1,3 +1,9 @@
 .list-group-item {
   line-height: 2.5;
 }
+.container {
+  display: flex;
+}
+.btn-primary {
+  background: #bbc3b6;
+}
