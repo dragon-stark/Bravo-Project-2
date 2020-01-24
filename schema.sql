@@ -7,10 +7,10 @@ USE employees_db;
 CREATE TABLE reviews
 (
     employee_id INT NOT NULL,
-    last name
-    VARCHAR
+    last_name
+        VARCHAR
     (25) NOT NULL,
-    first name VARCHAR
+    first_name VARCHAR
     (25) NOT NULL,
     department VARCHAR
     (45) NOT NULL,
@@ -28,5 +28,5 @@ CREATE TABLE reviews
     (employee_id)
 );
 
-    SELECT *
-    FROM reviews;
+SELECT *
+FROM reviews;
