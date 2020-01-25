@@ -1,14 +1,14 @@
 {
   "development": {
-    "username": "joji",
-    "password": "trilogy1",
+    "username": process.env.DB_USER,
+    "password": process.env.DB_PASS,
     "database": "employees_db",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
-    "username": "joji",
-    "password": "trilogy1",
+    "username": process.env.DB_USER,
+    "password": process.env.DB_PASS,
     "database": "employees_db",
     "host": "localhost",
     "dialect": "mysql",
