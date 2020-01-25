@@ -14,16 +14,11 @@ CREATE TABLE reviews
     (25) NOT NULL,
     department VARCHAR
     (45) NOT NULL,
-    attitute VARCHAR
-    (100),
-    communication VARCHAR
-    (100),
-    efficiency VARCHAR
-    (100),
-    proficiency VARCHAR
-    (100),
-    Reliability VARCHAR
-    (100),
+    attitute INT,
+    communication INT,
+    efficiency INT,
+    proficiency INT,
+    Reliability INT,
     PRIMARY KEY
     (employee_id)
 );
