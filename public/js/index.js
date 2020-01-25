@@ -1,8 +1,25 @@
 // Get references to page elements
-var $exampleText = $("#example-text");
+var addEmployee = $("#add-Employee");
+var searchDepartment = $("#search-Department");
+var employeeSearchBar = $("#employee-search");
+var departmentFlag = false;
+
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
+
+searchDepartment.on("click", function() {
+  departmentFlag = true;
+  console.log(departmentFlag);
+  employeeSearchBar.attr("placeholder")
+  return departmentFlag;
+});
+
+addEmployee.on("click", function() {
+  departmentFlag = false;
+  console.log(departmentFlag);
+  return departmentFlag;
+});
 
 // The API object contains methods for each kind of request we'll make
 var API = {
