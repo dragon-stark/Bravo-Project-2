@@ -1,15 +1,15 @@
 {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "exampledb",
+    "username": "joji",
+    "password": "trilogy1",
+    "database": "employees_db",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "testdb",
+    "username": "joji",
+    "password": "trilogy1",
+    "database": "employees_db",
     "host": "localhost",
     "dialect": "mysql",
     "logging": false
