@@ -16,48 +16,66 @@
       crossorigin="anonymous"
     />
 
-    <title>Rate Your Employees!</title>
+    {{!-- local css connection --}}
+<link rel="stylesheet" href="../public/styles/styles.css">
+
+    <title >Rate Your Employees!</title>
+  <style> 
+body {background-color: #223982;}
+h1 {
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
+}
+button, input, btn-secondary{
+  box-shadow: 10px 10px 5px rgb(145, 143, 143);
+  border: 1px solid #E0EF4D;
+  border-radius: 7px;
+}
+  </style>
+
+
   </head>
-  <body>
-    <div class="jumbotron jumbotron-flui">
-      <div class="container">
-        <h1>Rate Your Employees!</h1>
-               <form>
-            <input class="form-control form-control-lg" type="text" placeholder="Search for employee" id="employee-search">
+  <body>     
+    <div class="jumbotron jumbotron-fluid" style="background-color: #F2EDF0">  
+      
+ <div class="container" style="color: #0024BD; text-align:center">
+        <h1>Rate Your Employees</h1>
+            <form>
+            <input class="form-control form-control-lg"    style=" color:#0024BD" type="text" placeholder="Search employee by name" id="employee-search">
             <input type="submit" style="display: none" />
           </form>
 
           <br>
-
-        <div class="employee-search-buttons">
-          <button
-            type="button"
-            class="btn-secondary"
-            id="add-Employee"
-            style="background-color: #90AFC5"
-          >
-            Add Employee
-          </button>
+<div class="d-flex justify-content-md-around"> 
+        <div class="employee-search-buttons"  style="color: #E0EF4D">
           <button
             type="button"
             class="btn-secondary "
             id="list-Employee"
-            style="background-color: #90AFC5"
+            style="background-color: #E0EF4D; color:#0024BD"
           >
-            Employee List
+            Employee Database
           </button>
           <button
             type="button"
             class="btn-secondary"
             id="search-Department"
-            style=" background-color: #90AFC5"
+            style=" background-color: #E0EF4D; color:#0024BD"
           >
-            Department Search
+            Search by Department
+          </button>
+                  <button
+            type="button"
+            class="btn-secondary"
+            id="add-Employee"
+            style="background-color: #E0EF4D; color:#0024BD"
+          >
+           Add Employee
           </button>
         </div>
       </div>
 
-      
+           </div> 
 
 
     </div>
