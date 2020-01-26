@@ -1,21 +1,23 @@
+
+
 {
   "development": {
-    "username": process.env.DB_USER,
-    "password": process.env.DB_PASS,
+    "username": "joji",
+    "password": "trilogy1",
     "database": "employees_db",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
-    "username": process.env.DB_USER,
-    "password": process.env.DB_PASS,
+    "username": "joji",
+    "password": "trilogy1",
     "database": "employees_db",
     "host": "localhost",
     "dialect": "mysql",
     "logging": false
   },
   "production": {
-    "use_env_variable": "JAWSDB_URL",
+    "use_env_variable": "mysql://ml1ccxmudoyj7akz:nfozrasyridlxr6t@nba02whlntki5w2p.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/kq4azs0474xr6ldf",
     "dialect": "mysql"
   }
 }
