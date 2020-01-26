@@ -1,9 +1,29 @@
 .list-group-item {
   line-height: 2.5;
 }
-.container {
+.btn-secondary,
+.button {
+  border: 5px solid #e0ef4d;
+}
+.employee-search-buttons {
   display: flex;
+  justify-items: center;
+  align-items: center;
 }
-.btn-primary {
-  background: #bbc3b6;
+/* .flex-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 150px;
+  color: #e0ef4d;
 }
+
+.employee-search-buttons {
+  display: flex;
+  padding: 20px;
+  align-items: center;
+}
+#search-buttons {
+  justify-content: space-evenly;
+  padding: 100px;
+} */
