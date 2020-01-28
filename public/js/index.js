@@ -11,29 +11,29 @@ var bigForm = $("<form></form>");
 bigForm.css("padding-left", "100px");
 var inputFirst = $("<input type = 'text' id='first-name'>");
 var inputLast = $("<input type = 'text' id='last-name'>");
-// var inputDepartment = $(
-//   "<div class='wpac-rating' data-wpac-chan='product_id_1'></div>"
-// );
+var inputDepartment = $(
+  "<div class='wpac-rating' data-wpac-chan='product_id_1'></div>"
+);
 // var inputAttitude;
 // var inputCommunication;
 // var inputEfficiency;
 // var inputProficiency;
 // var inputReliability;
 
-// wpac_init = window.wpac_init || [];
-// wpac_init.push({ widget: "Rating", id: 23052 });
-// (function() {
-//   if ("WIDGETPACK_LOADED" in window) {
-//     return;
-//   }
-//   WIDGETPACK_LOADED = true;
-//   var mc = document.createElement("script");
-//   mc.type = "text/javascript";
-//   mc.async = true;
-//   mc.src = "https://embed.widgetpack.com/widget.js";
-//   var s = document.getElementsByTagName("script")[0];
-//   s.parentNode.insertBefore(mc, s.nextSibling);
-// })();
+wpac_init = window.wpac_init || [];
+wpac_init.push({ widget: "Rating", id: 23052 });
+(function() {
+  if ("WIDGETPACK_LOADED" in window) {
+    return;
+  }
+  WIDGETPACK_LOADED = true;
+  var mc = document.createElement("script");
+  mc.type = "text/javascript";
+  mc.async = true;
+  mc.src = "https://embed.widgetpack.com/widget.js";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(mc, s.nextSibling);
+})();
 
 bigForm.append(inputFirst);
 bigForm.append("<br>");
@@ -41,7 +41,7 @@ bigForm.append("<br>");
 bigForm.append(inputLast);
 bigForm.append("<br>");
 bigForm.append("<br>");
-// bigForm.append(inputDepartment);
+bigForm.append(inputDepartment);
 
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
