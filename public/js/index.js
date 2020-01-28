@@ -2,7 +2,46 @@
 var addEmployee = $("#add-Employee");
 var searchDepartment = $("#search-Department");
 var employeeSearchBar = $("#employee-search");
+var employeeHeader = $("h1");
 var departmentFlag = false;
+var body = $("body");
+
+var bigDiv = $("<div></div>");
+var bigForm = $("<form></form>");
+bigForm.css("padding-left", "100px");
+var inputFirst = $("<input type = 'text' id='first-name'>");
+var inputLast = $("<input type = 'text' id='last-name'>");
+var inputDepartment = $(
+  "<div class='wpac-rating' data-wpac-chan='product_id_1'></div>"
+);
+// var inputAttitude;
+// var inputCommunication;
+// var inputEfficiency;
+// var inputProficiency;
+// var inputReliability;
+
+wpac_init = window.wpac_init || [];
+wpac_init.push({ widget: "Rating", id: 23052 });
+(function() {
+  if ("WIDGETPACK_LOADED" in window) {
+    return;
+  }
+  WIDGETPACK_LOADED = true;
+  var mc = document.createElement("script");
+  mc.type = "text/javascript";
+  mc.async = true;
+  mc.src = "https://embed.widgetpack.com/widget.js";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(mc, s.nextSibling);
+})();
+
+bigForm.append(inputFirst);
+bigForm.append("<br>");
+bigForm.append("<br>");
+bigForm.append(inputLast);
+bigForm.append("<br>");
+bigForm.append("<br>");
+bigForm.append(inputDepartment);
 
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
@@ -11,14 +50,49 @@ var $exampleList = $("#example-list");
 searchDepartment.on("click", function() {
   departmentFlag = true;
   console.log(departmentFlag);
-  employeeSearchBar.attr("placeholder")
+  employeeSearchBar.attr("placeholder", "Enter department name");
   return departmentFlag;
 });
 
+$(document).ready(function() {
+  gsap.to(addEmployee, {
+    duration: 2.5,
+    ease: "power2.out",
+    runBackwards: true,
+    x: 500
+  });
+
+  gsap.to(searchDepartment, {
+    duration: 2.5,
+    ease: "power2.out",
+    runBackwards: true,
+    y: 500
+  });
+
+  gsap.to(employeeSearchBar, {
+    duration: 2.5,
+    ease: "power2.out",
+    runBackwards: true,
+    y: -500
+  });
+
+  gsap.to(employeeHeader, {
+    duration: 2.5,
+    ease: "power2.out",
+    runBackwards: true,
+    y: -500
+  });
+});
+
+// addEmployee.on("click", function() {
+//   departmentFlag = false;
+//   console.log(departmentFlag);
+//   return departmentFlag;
+// });
+
 addEmployee.on("click", function() {
-  departmentFlag = false;
-  console.log(departmentFlag);
-  return departmentFlag;
+  bigDiv.append(bigForm);
+  body.append(bigDiv);
 });
 
 // The API object contains methods for each kind of request we'll make
