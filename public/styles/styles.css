@@ -1,6 +1,7 @@
 .list-group-item {
   line-height: 2.5;
 }
+
 .btn-secondary,
 .button {
   border: 5px solid #e0ef4d;
@@ -13,6 +14,21 @@
   justify-items: center;
   align-items: center;
 }
+body {
+  background-color: #223982;
+}
+h1 {
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
+}
+button,
+input,
+btn-secondary {
+  box-shadow: 10px 10px 5px rgb(145, 143, 143);
+  border: 1px solid #e0ef4d;
+  border-radius: 7px;
+}
+
 /* .flex-container {
   display: flex;
   justify-content: space-evenly;
