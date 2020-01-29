@@ -5,6 +5,9 @@
 .button {
   border: 5px solid #e0ef4d;
 }
+#list-Employee {
+  border: 5px solid #e0ef4d;
+}
 .employee-search-buttons {
   display: flex;
   justify-items: center;
