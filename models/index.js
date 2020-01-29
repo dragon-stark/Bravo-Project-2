@@ -13,9 +13,7 @@ console.log(config);
 if (config.use_env_variable) {
   var sequelize = new Sequelize(
     process.env[config.use_env_variable],
-    config.username,
-    config.password,
-    config
+    config.dialect
   );
 } else {
   var sequelize = new Sequelize(
