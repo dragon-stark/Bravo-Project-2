@@ -1,47 +1,30 @@
 // Get references to page elements
 var addEmployee = $("#add-Employee");
+//var employeeDatabase = $("#list-Employee");
 var searchDepartment = $("#search-Department");
 var employeeSearchBar = $("#employee-search");
 var employeeHeader = $("h1");
 var departmentFlag = false;
 var body = $("body");
-
+var starNum = Math.floor(Math.random() * 10000000) + 400;
 var bigDiv = $("<div></div>");
 var bigForm = $("<form></form>");
 bigForm.css("padding-left", "100px");
+var inputArr = [];
+var inputEmployeeId = $("<input type = 'text' id='employee-id'>");
 var inputFirst = $("<input type = 'text' id='first-name'>");
 var inputLast = $("<input type = 'text' id='last-name'>");
-// var inputDepartment = $(
-//   "<div class='wpac-rating' data-wpac-chan='product_id_1'></div>"
-// );
+var inputDepartment = $("<input type = 'text' id='department'>");
 // var inputAttitude;
 // var inputCommunication;
 // var inputEfficiency;
 // var inputProficiency;
 // var inputReliability;
+inputArr = [inputEmployeeId, inputFirst, inputLast, inputDepartment];
 
-// wpac_init = window.wpac_init || [];
-// wpac_init.push({ widget: "Rating", id: 23052 });
-// (function() {
-//   if ("WIDGETPACK_LOADED" in window) {
-//     return;
-//   }
-//   WIDGETPACK_LOADED = true;
-//   var mc = document.createElement("script");
-//   mc.type = "text/javascript";
-//   mc.async = true;
-//   mc.src = "https://embed.widgetpack.com/widget.js";
-//   var s = document.getElementsByTagName("script")[0];
-//   s.parentNode.insertBefore(mc, s.nextSibling);
-// })();
-
-bigForm.append(inputFirst);
-bigForm.append("<br>");
-bigForm.append("<br>");
-bigForm.append(inputLast);
-bigForm.append("<br>");
-bigForm.append("<br>");
-// bigForm.append(inputDepartment);
+for (var i = 0; i < inputArr.length; i++) {
+  bigForm.append(inputArr[i]);
+}
 
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
@@ -55,6 +38,8 @@ searchDepartment.on("click", function() {
 });
 
 $(document).ready(function() {
+  inputDepartment.attr("data-wpac-chan", starNum);
+
   gsap.to(addEmployee, {
     duration: 2.5,
     ease: "power2.out",
@@ -84,13 +69,24 @@ $(document).ready(function() {
   });
 });
 
-// addEmployee.on("click", function() {
-//   departmentFlag = false;
-//   console.log(departmentFlag);
-//   return departmentFlag;
-// });
-
 addEmployee.on("click", function() {
+
+  
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({ widget: "Rating", id: 23052 });
+  (function() {
+    if ("WIDGETPACK_LOADED" in window) {
+      return;
+    }
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement("script");
+    mc.type = "text/javascript";
+    mc.async = true;
+    mc.src = "https://embed.widgetpack.com/widget.js";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+
   bigDiv.append(bigForm);
   body.append(bigDiv);
 });
