@@ -1,9 +1,7 @@
-
-
 {
   "development": {
-    "username": "joji",
-    "password": "trilogy1",
+    "username": "root",
+    "password": "kbuchanan32",
     "database": "employees_db",
     "host": "localhost",
     "dialect": "mysql"
