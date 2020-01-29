@@ -6,7 +6,8 @@ USE employees_db;
 
 CREATE TABLE reviews
 (
-    employee_id INT NOT NULL,
+    employee_id INT NOT NULL
+    AUTO_INCREMENT,
     last_name
         VARCHAR
     (25) NOT NULL,
@@ -23,5 +24,5 @@ CREATE TABLE reviews
     (employee_id)
 );
 
-SELECT *
-FROM reviews;
+    SELECT *
+    FROM reviews;

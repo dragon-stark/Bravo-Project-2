@@ -1,3 +1,4 @@
+
 // Get references to page elements
 var addEmployee = $("#add-Employee");
 //var employeeDatabase = $("#list-Employee");
@@ -6,25 +7,20 @@ var employeeSearchBar = $("#employee-search");
 var employeeHeader = $("h1");
 var departmentFlag = false;
 var body = $("body");
-var starNum = Math.floor(Math.random() * 10000000) + 400;
+
 var bigDiv = $("<div></div>");
 var bigForm = $("<form></form>");
 bigForm.css("padding-left", "100px");
-var inputArr = [];
-var inputEmployeeId = $("<input type = 'text' id='employee-id'>");
-var inputFirst = $("<input type = 'text' id='first-name'>");
-var inputLast = $("<input type = 'text' id='last-name'>");
-var inputDepartment = $("<input type = 'text' id='department'>");
-// var inputAttitude;
-// var inputCommunication;
-// var inputEfficiency;
-// var inputProficiency;
-// var inputReliability;
-inputArr = [inputEmployeeId, inputFirst, inputLast, inputDepartment];
 
-for (var i = 0; i < inputArr.length; i++) {
-  bigForm.append(inputArr[i]);
-}
+var inputEmployeeId = $("<input type = 'text' id='employee-id'>");
+var inputLast = $("<input type = 'text' id='last-name'>");
+var inputFirst = $("<input type = 'text' id='first-name'>");
+var inputDepartment = $("<input type = 'text' id='department'>");
+var inputAttitude = $("<div class='wpac-rating'></div>");
+var inputCommunication = $("<div class='wpac-rating'></div>");
+var inputEfficiency = $("<div class='wpac-rating'></div>");
+var inputProficiency = $("<div class='wpac-rating'></div>");
+var inputReliability = $("<div class='wpac-rating'></div>");
 
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
@@ -38,7 +34,26 @@ searchDepartment.on("click", function() {
 });
 
 $(document).ready(function() {
-  inputDepartment.attr("data-wpac-chan", starNum);
+  inputAttitude.attr(
+    "data-wpac-chan",
+    Math.floor(Math.random() * 10000000) + 400
+  );
+  inputCommunication.attr(
+    "data-wpac-chan",
+    Math.floor(Math.random() * 10000000) + 400
+  );
+  inputEfficiency.attr(
+    "data-wpac-chan",
+    Math.floor(Math.random() * 10000000) + 400
+  );
+  inputProficiency.attr(
+    "data-wpac-chan",
+    Math.floor(Math.random() * 10000000) + 400
+  );
+  inputReliability.attr(
+    "data-wpac-chan",
+    Math.floor(Math.random() * 10000000) + 400
+  );
 
   gsap.to(addEmployee, {
     duration: 2.5,
@@ -70,8 +85,6 @@ $(document).ready(function() {
 });
 
 addEmployee.on("click", function() {
-
-  
   wpac_init = window.wpac_init || [];
   wpac_init.push({ widget: "Rating", id: 23052 });
   (function() {
@@ -86,9 +99,32 @@ addEmployee.on("click", function() {
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(mc, s.nextSibling);
   })();
+  var inputArr = [
+    inputEmployeeId,
+    inputLast,
+    inputFirst,
+    inputDepartment,
+    inputAttitude,
+    inputCommunication,
+    inputEfficiency,
+    inputProficiency,
+    inputReliability
+  ];
+
+  for (var j = 0; j < inputArr.length; j++) {
+    bigForm.append(inputArr[j]);
+  }
 
   bigDiv.append(bigForm);
   body.append(bigDiv);
+
+  inputCommunication.on("click", function() {
+    console.log(
+      $(this)
+        .val($(this))
+        .attr("data-wpac-chan")
+    );
+  });
 });
 
 // The API object contains methods for each kind of request we'll make
