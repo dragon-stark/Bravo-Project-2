@@ -8,6 +8,13 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/employees/:id", function(req, res) {
+    db.reviews
+      .findOne({ where: { employee_id: req.params.employee_id } })
+      .then(function(result) {
+        res.json(result);
+      });
+  });
   //Create a new example
   app.post("/api/employees", function(req, res) {
     db.reviews.create(req.body).then(function(results) {

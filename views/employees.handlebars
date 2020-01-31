@@ -1,7 +1,43 @@
+
+
+<div id="database">
+  <ul id="example-list" class="list-group">
+     {{#each employees}}
+    <li data-id="{{this.employee_id}}" class="list-group-item">
+      <a href="employees/{{this.id}}">{{this.last_name}}, {{this.first_name}}</a>
+
+      </li>
+            <div class="wpac-rating" id="{{employee.attitute}}"  data-wpac-chan="{{this.attitute}}"></div>
+            <div class="wpac-rating" id="{{employee.attitute}}"  data-wpac-chan="{{this.communication}}"></div>
+            <div class="wpac-rating" id="{{employee.attitute}}"  data-wpac-chan="{{this.efficiency}}"></div>
+            <div class="wpac-rating" id="{{employee.attitute}}"  data-wpac-chan="{{this.proficiency}}"></div>
+            <div class="wpac-rating" id="{{employee.attitute}}"  data-wpac-chan="{{this.Reliability}}"></div>
+            
+        {{!-- <div class="wpac-rating" data-wpac-chan="product_id_" + {{this.attitute}}></div> --}}
+        
+      {{/each}}
+  </ul>
+</div> 
+
   <div class="container">
-    <div class="row">
-
-        <p>{{employee.last_name}}</p>
-
-    </div>
+  <div class="jumbotron mt-4">
+    <a href="/">← Back To Home</a>
+  </div>
 </div>
+
+      <script type="text/javascript">
+        wpac_init = window.wpac_init || [];
+  wpac_init.push({ widget: "Rating", id: 23052 });
+  (function() {
+    if ("WIDGETPACK_LOADED" in window) {
+      return;
+    }
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement("script");
+    mc.type = "text/javascript";
+    mc.async = true;
+    mc.src = "https://embed.widgetpack.com/widget.js";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+    </script>
