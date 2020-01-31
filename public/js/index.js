@@ -1,4 +1,3 @@
-
 // Get references to page elements
 var addEmployee = $("#add-Employee");
 //var employeeDatabase = $("#list-Employee");
@@ -6,24 +5,28 @@ var searchDepartment = $("#search-Department");
 var employeeSearchBar = $("#employee-search");
 var employeeHeader = $("h1");
 var departmentFlag = false;
-var body = $("body");
-
-var bigDiv = $("<div></div>");
+var check = 0;
+var nameButton = $("#name-button");
+//var body = $("body");
+var bigDiv = $(".modal-body");
 var bigForm = $("<form></form>");
 bigForm.css("padding-left", "100px");
-
-var inputEmployeeId = $("<input type = 'text' id='employee-id'>");
-var inputLast = $("<input type = 'text' id='last-name'>");
-var inputFirst = $("<input type = 'text' id='first-name'>");
+var inputLast = $(
+  "<input type = 'text' id='last-name' placeholder='Last Name'>"
+);
+var inputFirst = $("<input type = 'text' id='first-name' >");
 var inputDepartment = $("<input type = 'text' id='department'>");
-var inputAttitude = $("<div class='wpac-rating'></div>");
-var inputCommunication = $("<div class='wpac-rating'></div>");
-var inputEfficiency = $("<div class='wpac-rating'></div>");
-var inputProficiency = $("<div class='wpac-rating'></div>");
-var inputReliability = $("<div class='wpac-rating'></div>");
+var inputAttitude = $("<div class='wpac-rating' id='attitude'></div>");
+var inputCommunication = $(
+  "<div class='wpac-rating' id='communication'></div>"
+);
+var inputEfficiency = $("<div class='wpac-rating' id='efficiency'></div>");
+var inputProficiency = $("<div class='wpac-rating' id='proficiency'></div>");
+var inputReliability = $("<div class='wpac-rating id='reliability''></div>");
 
-var $exampleDescription = $("#example-description");
-var $submitBtn = $("#submit");
+var submitButton = $("#sbmt-btn");
+// var $exampleDescription = $("#example-description");
+// var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
 
 searchDepartment.on("click", function() {
@@ -34,27 +37,10 @@ searchDepartment.on("click", function() {
 });
 
 $(document).ready(function() {
-  inputAttitude.attr(
-    "data-wpac-chan",
-    Math.floor(Math.random() * 10000000) + 400
-  );
-  inputCommunication.attr(
-    "data-wpac-chan",
-    Math.floor(Math.random() * 10000000) + 400
-  );
-  inputEfficiency.attr(
-    "data-wpac-chan",
-    Math.floor(Math.random() * 10000000) + 400
-  );
-  inputProficiency.attr(
-    "data-wpac-chan",
-    Math.floor(Math.random() * 10000000) + 400
-  );
-  inputReliability.attr(
-    "data-wpac-chan",
-    Math.floor(Math.random() * 10000000) + 400
-  );
+  // eslint-disable-next-line eqeqeq
 
+  API.getExamples();
+  refreshExamples();
   gsap.to(addEmployee, {
     duration: 2.5,
     ease: "power2.out",
@@ -84,7 +70,27 @@ $(document).ready(function() {
   });
 });
 
-addEmployee.on("click", function() {
+function randomizeData() {
+  inputAttitude.attr(
+    "data-wpac-chan",
+    Math.floor(Math.random() * 10000000) + 400
+  );
+  inputCommunication.attr(
+    "data-wpac-chan",
+    Math.floor(Math.random() * 10000000) + 400
+  );
+  inputEfficiency.attr(
+    "data-wpac-chan",
+    Math.floor(Math.random() * 10000000) + 400
+  );
+  inputProficiency.attr(
+    "data-wpac-chan",
+    Math.floor(Math.random() * 10000000) + 400
+  );
+  inputReliability.attr(
+    "data-wpac-chan",
+    Math.floor(Math.random() * 10000000) + 400
+  );
   wpac_init = window.wpac_init || [];
   wpac_init.push({ widget: "Rating", id: 23052 });
   (function() {
@@ -99,26 +105,66 @@ addEmployee.on("click", function() {
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(mc, s.nextSibling);
   })();
-  var inputArr = [
-    inputEmployeeId,
-    inputLast,
-    inputFirst,
-    inputDepartment,
-    inputAttitude,
-    inputCommunication,
-    inputEfficiency,
-    inputProficiency,
-    inputReliability
-  ];
+}
 
-  for (var j = 0; j < inputArr.length; j++) {
-    bigForm.append(inputArr[j]);
-  }
+// function removeAll() {}
+
+addEmployee.on("click", function() {
+  randomizeData();
+  bigForm.append($("<p>Last Name: </p>"));
+  bigForm.append(inputLast);
+  bigForm.append($("<br>"));
+  bigForm.append($("<br>"));
+  bigForm.append($("<hr>"));
+
+  bigForm.append($("<p>First Name: </p>"));
+  bigForm.append(inputFirst);
+  bigForm.append($("<br>"));
+  bigForm.append($("<br>"));
+  bigForm.append($("<hr>"));
+
+  bigForm.append($("<p>Department: </p>"));
+  bigForm.append(inputDepartment);
+  bigForm.append($("<br>"));
+  bigForm.append($("<br>"));
+  bigForm.append($("<hr>"));
+
+  bigForm.append($("<p>Attitude: </p>"));
+  bigForm.append(inputAttitude);
+  bigForm.append($("<br>"));
+  bigForm.append($("<hr>"));
+
+  bigForm.append($("<p>Communication: </p>"));
+  bigForm.append(inputCommunication);
+  bigForm.append($("<br>"));
+  bigForm.append($("<hr>"));
+
+  bigForm.append($("<p>Efficiency </p>"));
+  bigForm.append(inputEfficiency);
+  bigForm.append($("<br>"));
+  bigForm.append($("<hr>"));
+
+  bigForm.append($("<p>Proficiency: </p>"));
+  bigForm.append(inputProficiency);
+  bigForm.append($("<br>"));
+  bigForm.append($("<hr>"));
+
+  bigForm.append($("<p>Reliability: </p>"));
+  bigForm.append(inputReliability);
+  bigForm.append($("<br>"));
+  bigForm.append($("<hr>"));
 
   bigDiv.append(bigForm);
-  body.append(bigDiv);
+  // body.append(bigDiv);
 
   inputCommunication.on("click", function() {
+    console.log(
+      $(this)
+        .val($(this))
+        .attr("data-wpac-chan")
+    );
+  });
+  inputAttitude.on("click", function() {
     console.log(
       $(this)
         .val($(this))
@@ -135,50 +181,33 @@ var API = {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/examples",
+      url: "/api/employees",
       data: JSON.stringify(example)
     });
   },
   getExamples: function() {
     return $.ajax({
-      url: "api/examples",
+      url: "/api/employees",
       type: "GET"
-    });
-  },
-  deleteExample: function(id) {
-    return $.ajax({
-      url: "api/examples/" + id,
-      type: "DELETE"
     });
   }
 };
 
-// refreshExamples gets new examples from the db and repopulates the list
 var refreshExamples = function() {
   API.getExamples().then(function(data) {
-    var $examples = data.map(function(example) {
+    var $employees = data.map(function(employee) {
       var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
-
+        .text(employee.last_name)
+        .attr("href", "/employees/" + employee.employee_id);
       var $li = $("<li>")
-        .attr({
-          class: "list-group-item",
-          "data-id": example.id
-        })
+        .attr({ class: "list-group-item", "data-id": employee.employee_id })
         .append($a);
-
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
-
-      $li.append($button);
 
       return $li;
     });
 
     $exampleList.empty();
-    $exampleList.append($examples);
+    $exampleList.append($employees);
   });
 };
 
@@ -186,37 +215,47 @@ var refreshExamples = function() {
 // Save the new example to the db and refresh the list
 var handleFormSubmit = function(event) {
   event.preventDefault();
+  //removeAll();
+  check = 1;
+  var employee = {
 
-  var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
+    last_name: inputLast.val().trim(),
+    first_name: inputFirst.val().trim(),
+    department: inputDepartment.val().trim(),
+    attitute: inputAttitude.val($(this)).attr("data-wpac-chan"),
+    communication: inputCommunication.val($(this)).attr("data-wpac-chan"),
+    efficiency: inputEfficiency.val($(this)).attr("data-wpac-chan"),
+    proficiency: inputProficiency.val($(this)).attr("data-wpac-chan"),
+    Reliability: inputReliability.val($(this)).attr("data-wpac-chan")
   };
 
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
-    return;
-  }
+  API.saveExample(employee);
+  inputLast.val("");
+  inputFirst.val("");
+  inputDepartment.val("");
+  randomizeData();
 
-  API.saveExample(example).then(function() {
-    refreshExamples();
-  });
-
-  $exampleText.val("");
-  $exampleDescription.val("");
+  bigDiv.append($("<p>Employee Added!</p>"));
+  submitButton.hide();
 };
+
+$("#reset").on("click", function() {
+  if (check == 0) {
+    bigForm.empty();
+    bigDiv.empty();
+  } else {
+    setTimeout(function() {
+      window.location.reload();
+    }, 0);
+  }
+});
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function() {
-  var idToDelete = $(this)
-    .parent()
-    .attr("data-id");
-
-  API.deleteExample(idToDelete).then(function() {
-    refreshExamples();
-  });
-};
 
 // Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
+submitButton.on("click", handleFormSubmit);
+// $exampleList.on("click", ".delete", handleDeleteBtnClick);
+nameButton.on("click", function() {
+  console.log("yay");
+});

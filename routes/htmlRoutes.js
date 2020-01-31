@@ -2,28 +2,30 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Load index page
+
   app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
+    db.reviews.findAll({}).then(function(results) {
       res.render("index", {
-        msg: "Welcome!",
-        examples: dbExamples
+        employees: results
       });
     });
   });
 
-  app.get("/employees", function(req, res) {
-    res.render("employees");
-  });
+  // app.get("/employees", function(req, res) {
+  //   db.reviews.findAll({}).then(function(results) {
+  //     res.render("employees", { employees: results });
+  //   });
+  // });
 
   // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(
-      dbExample
-    ) {
-      res.render("example", {
-        example: dbExample
+  app.get("/employees/:id", function(req, res) {
+    db.reviews
+      .findOne({ where: { id: req.params.employee_id } })
+      .then(function(result) {
+        res.render("employees", {
+          employee: result
+        });
       });
-    });
   });
 
   // Render 404 page for any unmatched routes

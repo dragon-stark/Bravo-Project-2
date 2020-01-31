@@ -2,33 +2,51 @@
   line-height: 2.5;
 }
 
-.btn-secondary,
-.button {
-  border: 5px solid #e0ef4d;
+.jumbotron {
+  background-color: #F2EDF0;
 }
-#list-Employee {
-  border: 5px solid #e0ef4d;
+
+.container {
+  color: #0024BD; 
+  text-align: center;
 }
-.employee-search-buttons {
-  display: flex;
-  justify-items: center;
-  align-items: center;
+
+.form-control {
+  color:#0024BD;
 }
+
+li {
+  color: white;
+}
+
 body {
   background-color: #223982;
+  color: white;
 }
 h1 {
   color: white;
   text-shadow: 2px 2px 4px #000000;
 }
-button,
+a,
 input,
-btn-secondary {
+.btn-secondary {
   box-shadow: 10px 10px 5px rgb(145, 143, 143);
-  border: 1px solid #e0ef4d;
+  border: 5px solid #e0ef4d;
+  background-color: #E0EF4D;
+   color:#0024BD;
   border-radius: 7px;
+  padding: 3px;
 }
 
+.btn-secondary:hover {  
+  background-color: #E0EF4D;
+  border: 3px solid #0024BD;
+}
+
+.modal-body{
+  color: black;
+  align-content: flex-start;
+}
 /* .flex-container {
   display: flex;
   justify-content: space-evenly;
