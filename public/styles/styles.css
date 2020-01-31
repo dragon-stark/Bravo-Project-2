@@ -23,6 +23,19 @@ body {
   background-color: #223982;
   color: white;
 }
+
+p {
+  color: black;
+}
+
+.database {
+  color: black;
+}
+
+.wp-rating-score {
+  color: black;
+}
+
 h1 {
   color: white;
   text-shadow: 2px 2px 4px #000000;

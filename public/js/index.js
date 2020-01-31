@@ -91,6 +91,11 @@ function randomizeData() {
     "data-wpac-chan",
     Math.floor(Math.random() * 10000000) + 400
   );
+}
+
+// function removeAll() {}
+
+addEmployee.on("click", function() {
   wpac_init = window.wpac_init || [];
   wpac_init.push({ widget: "Rating", id: 23052 });
   (function() {
@@ -105,11 +110,7 @@ function randomizeData() {
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(mc, s.nextSibling);
   })();
-}
 
-// function removeAll() {}
-
-addEmployee.on("click", function() {
   randomizeData();
   bigForm.append($("<p>Last Name: </p>"));
   bigForm.append(inputLast);
@@ -193,15 +194,49 @@ var API = {
   }
 };
 
+////////////////////////////
+
+//////////////////////////
+
 var refreshExamples = function() {
   API.getExamples().then(function(data) {
     var $employees = data.map(function(employee) {
       var $a = $("<a>")
         .text(employee.last_name)
         .attr("href", "/employees/" + employee.employee_id);
+      var $div = $("<div>")
+        .attr("class", "wpac-rating")
+        .attr("data-wpac-chan", employee.attitute);
+      var $div2 = $("<div>")
+        .attr("class", "wpac-rating")
+        .attr("data-wpac-chan", employee.communication);
+      var $div3 = $("<div>")
+        .attr("class", "wpac-rating")
+        .attr("data-wpac-chan", employee.efficiency);
+      var $div4 = $("<div>")
+        .attr("class", "wpac-rating")
+        .attr("data-wpac-chan", employee.proficiency);
+      var $div5 = $("<div>")
+        .attr("class", "wpac-rating")
+        .attr("data-wpac-chan", employee.Reliability);
+      var $p = $("<p>").text("Attitude");
+      var $p2 = $("<p>").text("Communication:");
+      var $p3 = $("<p>").text("Efficiency:");
+      var $p4 = $("<p>").text("Proficiency:");
+      var $p5 = $("<p>").text("Reliability:");
       var $li = $("<li>")
         .attr({ class: "list-group-item", "data-id": employee.employee_id })
-        .append($a);
+        .append($a)
+        .append($p)
+        .append($div)
+        .append($p2)
+        .append($div2)
+        .append($p3)
+        .append($div3)
+        .append($p4)
+        .append($div4)
+        .append($p5)
+        .append($div5);
 
       return $li;
     });
@@ -218,7 +253,6 @@ var handleFormSubmit = function(event) {
   //removeAll();
   check = 1;
   var employee = {
-
     last_name: inputLast.val().trim(),
     first_name: inputFirst.val().trim(),
     department: inputDepartment.val().trim(),
