@@ -1,46 +1,77 @@
   
-    <div class="jumbotron jumbotron-fluid" style="background-color: #F2EDF0">  
+    <div class="jumbotron jumbotron-fluid">  
       
- <div class="container" style="color: #0024BD; text-align:center">
+ <div class="container">
         <h1>Rate Your Employees</h1>
             <form>
-            <input class="form-control form-control-lg"    style=" color:#0024BD" type="text" placeholder="Search employee by name" id="employee-search">
-            <input type="submit" style="display: none" />
+            <input class="form-control form-control-lg" type="text" placeholder="Search employee by name" id="employee-search">
+            <input type="submit" id="search-submit" style="display: none" />
           </form>
           <br>
 <div class="d-flex justify-content-md-around"> 
-        <div class="employee-search-buttons"  style="color: #E0EF4D">
-          <button
+        <div class="employee-search-buttons">
+          <a
             type="button"
             class="btn-secondary "
             id="search-Employee"
-            style="background-color: #E0EF4D; color:#0024BD">
+            >
            Search Employee
-          </button>
-           <button
+          </a>
+           <a
             type="button"
             class="btn-secondary "
             id="list-Employee"
-            style="background-color: #E0EF4D; color:#0024BD"
-          >
+            href="employees"> 
             Employee Database
-          </button>
-          <button
+          </a>
+          <a
             type="button"
             class="btn-secondary"
             id="search-Department"
-            style=" background-color: #E0EF4D; color:#0024BD">
+            >
             Search by Department
-          </button>
-                  <button
+          </a>
+                  <a
             type="button"
             class="btn-secondary"
             id="add-Employee"
-            style="background-color: #E0EF4D; color:#0024BD"
+            data-toggle="modal"
+            data-target="#exampleModal"
           >
            Add Employee
-          </button>
+          </a>
         </div>
       </div>
  </div> 
     </div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="reset" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="sbmt-btn">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="database">
+  <ul id="example-list" class="list-group">
+     {{#each employees}}
+    <li data-id="{{this.employee_id}}" class="list-group-item">
+      <a href="employees/{{this.id}}">{{this.last_name}}</a>
+      </li>
+      {{/each}}
+  </ul>
+
+</div>
