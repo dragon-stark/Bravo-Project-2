@@ -1,8 +1,9 @@
 // Get references to page elements
 var addEmployee = $("#add-Employee");
-//var employeeDatabase = $("#list-Employee");
+var employeeDatabase = $("#list-Employee");
 var searchDepartment = $("#search-Department");
 var employeeSearchBar = $("#employee-search");
+var searchEmployee = $("#search-Employee")
 var employeeHeader = $("h1");
 var departmentFlag = false;
 var check = 0;
@@ -30,11 +31,18 @@ var submitButton = $("#sbmt-btn");
 var $exampleList = $("#example-list");
 
 searchDepartment.on("click", function() {
-  departmentFlag = true;
+  // departmentFlag = true;
   console.log(departmentFlag);
-  employeeSearchBar.attr("placeholder", "Enter department name");
+  employeeSearchBar.attr("placeholder", "Search employee by department");
   return departmentFlag;
 });
+
+searchEmployee.on("click", function() {
+  // departmentFlag = true;
+  console.log(departmentFlag);
+  employeeSearchBar.attr("placeholder", "Search employee by name");
+  return departmentFlag;
+})
 
 $(document).ready(function() {
   // eslint-disable-next-line eqeqeq
@@ -42,14 +50,28 @@ $(document).ready(function() {
   API.getExamples();
   refreshExamples();
   gsap.to(addEmployee, {
-    duration: 2.5,
+    duration: 3.5,
     ease: "power2.out",
     runBackwards: true,
-    x: 500
+    y: 500
   });
 
   gsap.to(searchDepartment, {
     duration: 2.5,
+    ease: "power2.out",
+    runBackwards: true,
+    y: 500
+  });
+
+  gsap.to(searchEmployee, {
+    duration: 1.0,
+    ease: "power2.out",
+    runBackwards: true,
+    y: 500
+  });
+
+  gsap.to(employeeDatabase, {
+    duration: 1.5,
     ease: "power2.out",
     runBackwards: true,
     y: 500
@@ -63,10 +85,17 @@ $(document).ready(function() {
   });
 
   gsap.to(employeeHeader, {
-    duration: 2.5,
+    duration: 3.5,
     ease: "power2.out",
     runBackwards: true,
     y: -500
+  });
+
+  gsap.to($("#database"), {
+    duration: 3.5,
+    ease: "power2.out",
+    runBackwards: true,
+    x: -500
   });
 });
 
@@ -201,8 +230,9 @@ var API = {
 var refreshExamples = function() {
   API.getExamples().then(function(data) {
     var $employees = data.map(function(employee) {
-      var $a = $("<a>")
-        .text(employee.last_name)
+      var $dep = $("<h4>").text("Department: " + employee.department);
+      var $a = $("<h2>")
+        .text(employee.last_name + ", " + employee.first_name)
         .attr("href", "/employees/" + employee.employee_id);
       var $div = $("<div>")
         .attr("class", "wpac-rating")
@@ -219,7 +249,7 @@ var refreshExamples = function() {
       var $div5 = $("<div>")
         .attr("class", "wpac-rating")
         .attr("data-wpac-chan", employee.Reliability);
-      var $p = $("<p>").text("Attitude");
+      var $p = $("<p>").text("Attitude:");
       var $p2 = $("<p>").text("Communication:");
       var $p3 = $("<p>").text("Efficiency:");
       var $p4 = $("<p>").text("Proficiency:");
@@ -227,6 +257,7 @@ var refreshExamples = function() {
       var $li = $("<li>")
         .attr({ class: "list-group-item", "data-id": employee.employee_id })
         .append($a)
+        .append($dep)
         .append($p)
         .append($div)
         .append($p2)
