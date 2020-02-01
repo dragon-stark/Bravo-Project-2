@@ -56,6 +56,10 @@ input,
   border: 3px solid #0024BD;
 }
 
+h2, h3, h4{
+  color: black;
+}
+
 .modal-body{
   color: black;
   align-content: flex-start;
