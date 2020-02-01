@@ -15,8 +15,12 @@ bigForm.css("padding-left", "100px");
 var inputLast = $(
   "<input type = 'text' id='last-name' placeholder='Last Name'>"
 );
-var inputFirst = $("<input type = 'text' id='first-name' >");
-var inputDepartment = $("<input type = 'text' id='department'>");
+var inputFirst = $(
+  "<input type = 'text' id='first-name' placeholder='First Name'>"
+);
+var inputDepartment = $(
+  "<input type = 'text' id='department' placeholder='Department'>"
+);
 var inputAttitude = $("<div class='wpac-rating' id='attitude'></div>");
 var inputCommunication = $(
   "<div class='wpac-rating' id='communication'></div>"
